@@ -1,5 +1,10 @@
+import json
 import unittest
-from client3 import getDataPoint
+import urllib.request
+from random import random
+
+from client3 import getDataPoint, getRatio, QUERY
+
 
 class ClientTest(unittest.TestCase):
   def test_getDataPoint_calculatePrice(self):
@@ -18,8 +23,23 @@ class ClientTest(unittest.TestCase):
 
 
   """ ------------ Add more unit tests ------------ """
+  def test_getRatio_divideByZero(self):
+    price_a = 10
+    price_b = 0
 
+    assert getRatio(price_a, price_b) == None
+
+  def test_getRatio_divideByValidNumber(self):
+    price_a = 10
+    price_b = 2
+
+    assert getRatio(price_a, price_b) == 5
+
+
+def printf(param):
+  pass
 
 
 if __name__ == '__main__':
     unittest.main()
+
